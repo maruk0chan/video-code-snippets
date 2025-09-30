@@ -11,9 +11,9 @@ fi
 
 # disk partitioning etc
 nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko disko.nix
-nixos-generate-config --no-filesystems --root /mnt
+nixos-generate-config --no-filesystems --root /mnt/nix
 
 # installation
 export NIXPKGS_ALLOW_UNFREE=1
 cp hardware-configuration.nix /mnt/etc/nixos/
-nixos-install --root /mnt --flake .#nix-llm --impure
+nixos-install --root /mnt/nix --flake .#nix-llm --impure
